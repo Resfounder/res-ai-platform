@@ -1,116 +1,16 @@
 "use client"
 
-import { Star, TrendingUp, MessageSquare, Clock, CheckCircle, Instagram, Facebook, MessageCircle } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
+import { useBusiness } from "../context/business-context"
 
 export function SocialDashboard() {
-  const stats = [
-    {
-      title: "Total Interactions",
-      value: "1,247",
-      change: "+23% this week",
-      icon: MessageSquare,
-      color: "text-blue-600",
-    },
-    {
-      title: "Response Rate",
-      value: "99.2%",
-      change: "+25% with AI",
-      icon: CheckCircle,
-      color: "text-green-600",
-    },
-    {
-      title: "Avg Response Time",
-      value: "3.2 min",
-      change: "-2.8 hrs saved",
-      icon: Clock,
-      color: "text-purple-600",
-    },
-    {
-      title: "Engagement Rate",
-      value: "8.4%",
-      change: "+1.2% this month",
-      icon: TrendingUp,
-      color: "text-orange-600",
-    },
-  ]
-
-  const platformStats = [
-    {
-      platform: "Instagram",
-      icon: Instagram,
-      interactions: 456,
-      responseRate: "99%",
-      avgTime: "2.1 min",
-      color: "text-pink-600",
-      bgColor: "bg-pink-50",
-    },
-    {
-      platform: "Facebook",
-      icon: Facebook,
-      interactions: 324,
-      responseRate: "100%",
-      avgTime: "1.8 min",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-    },
-    {
-      platform: "Google Reviews",
-      icon: Star,
-      interactions: 89,
-      responseRate: "98%",
-      avgTime: "4.2 min",
-      color: "text-yellow-600",
-      bgColor: "bg-yellow-50",
-    },
-    {
-      platform: "Messages",
-      icon: MessageCircle,
-      interactions: 378,
-      responseRate: "99%",
-      avgTime: "2.8 min",
-      color: "text-green-600",
-      bgColor: "bg-green-50",
-    },
-  ]
-
-  const recentActivity = [
-    {
-      id: 1,
-      type: "instagram_comment",
-      customer: "@sarah_foodie",
-      content: "This pasta looks amazing! 😍",
-      response:
-        "Thank you Sarah! Our chef uses a family recipe that's been perfected over 20 years. Come try it soon! 🍝",
-      platform: "Instagram",
-      timeAgo: "2 min ago",
-      status: "responded",
-    },
-    {
-      id: 2,
-      type: "facebook_message",
-      customer: "Mike Johnson",
-      content: "Do you have gluten-free options?",
-      response:
-        "Hi Mike! Yes, we have several delicious gluten-free pasta options and our chef can modify most dishes. Would you like to see our full gluten-free menu?",
-      platform: "Facebook",
-      timeAgo: "5 min ago",
-      status: "responded",
-    },
-    {
-      id: 3,
-      type: "google_review",
-      customer: "Jennifer L.",
-      content: "Best Italian food in town! Service was outstanding.",
-      response:
-        "Jennifer, thank you so much! We're thrilled you enjoyed both the food and service. Our team works hard to create that perfect dining experience! 🌟",
-      platform: "Google",
-      timeAgo: "12 min ago",
-      status: "responded",
-    },
-  ]
+  const { profile } = useBusiness()
+  const stats = profile.stats
+  const platformStats = profile.platformStats
+  const recentActivity = profile.recentActivity
 
   return (
     <div className="space-y-6">

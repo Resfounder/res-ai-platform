@@ -6,13 +6,25 @@ import { MessageSquare, Settings, BarChart3, Sparkles, PenTool, Inbox } from "lu
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { SocialDashboard } from "./components/social-dashboard"
 import { UnifiedInbox } from "./components/unified-inbox"
 import { ContentGenerator } from "./components/content-generator"
 import { SettingsPanel } from "./components/settings-panel"
+import { BusinessProvider, useBusiness } from "./context/business-context"
+import { businessTypeOptions, type BusinessType } from "./data/business-profiles"
 
 export default function RESApp() {
+  return (
+    <BusinessProvider>
+      <RESAppContent />
+    </BusinessProvider>
+  )
+}
+
+function RESAppContent() {
   const [activeTab, setActiveTab] = useState("dashboard")
+  const { businessType, setBusinessType, profile } = useBusiness()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-100">
@@ -26,10 +38,25 @@ export default function RESApp() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">R.E.S.</h1>
-                <p className="text-sm text-gray-500">Never miss another customer query</p>
+                <p className="text-sm text-gray-500">{profile.name}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm font-medium text-gray-600 hidden sm:inline">Demo business</span>
+                <Select value={businessType} onValueChange={(value) => setBusinessType(value as BusinessType)}>
+                  <SelectTrigger className="w-[150px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {businessTypeOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <Badge variant="secondary" className="bg-purple-100 text-purple-800">
                 Pro Plan - $399/mo
               </Badge>

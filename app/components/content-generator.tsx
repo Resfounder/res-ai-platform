@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { PenTool, Calendar, ImageIcon, Sparkles, Instagram, Copy, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -9,43 +9,34 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import { useBusiness } from "../context/business-context"
 
 export function ContentGenerator() {
+  const { profile } = useBusiness()
   const [contentType, setContentType] = useState("daily-special")
   const [generatedContent, setGeneratedContent] = useState("")
   const [isGenerating, setIsGenerating] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
-  const contentTemplates = [
-    { id: "daily-special", name: "Daily Special Post", description: "Showcase today's featured dish" },
-    { id: "review-celebration", name: "Review Celebration", description: "Share positive customer reviews" },
-    { id: "behind-scenes", name: "Behind the Scenes", description: "Show kitchen/staff in action" },
-    { id: "customer-story", name: "Customer Story", description: "Highlight loyal customers" },
-    { id: "seasonal-menu", name: "Seasonal Menu", description: "Promote seasonal offerings" },
-    { id: "event-announcement", name: "Event Announcement", description: "Announce special events" },
-  ]
+  const contentTemplates = profile.contentTemplates
+  const sampleContent = profile.sampleContent
 
-  const sampleContent = {
-    "daily-special": {
-      instagram:
-        "🍝 Today's Special: Truffle Mushroom Risotto! 🍄✨\n\nOur chef's signature creamy arborio rice with wild mushrooms, fresh truffle shavings, and aged parmesan. Each grain is perfectly cooked to creamy perfection!\n\n📍 Available today only\n💰 $28\n⏰ Until 9 PM or while supplies last\n\n#TruffleRisotto #DailySpecial #ItalianCuisine #FreshTruffles #BellasItalianBistro #FoodieFavorites",
-      facebook:
-        "🍝 DAILY SPECIAL ALERT! 🍝\n\nToday we're featuring our incredible Truffle Mushroom Risotto - a dish that's been 20 years in the making! Our chef combines creamy arborio rice with wild mushrooms and fresh truffle shavings for a truly unforgettable experience.\n\nThis special is only available today for $28, and trust us - it's worth every penny! Come in before 9 PM or while supplies last.\n\nWhat's your favorite risotto flavor? Let us know in the comments! 👇",
-    },
-    "review-celebration": {
-      instagram:
-        '⭐⭐⭐⭐⭐ WOW! Thank you Sarah M.! ⭐⭐⭐⭐⭐\n\n"Amazing service! The staff was incredibly helpful and the food was delicious. Best Italian restaurant in town!" - Sarah M.\n\nReviews like this make our day! 🥰 Thank you for choosing Bella\'s and for taking the time to share your experience.\n\n#CustomerLove #FiveStars #BestItalian #ThankYou #BellasFamily #HappyCustomers',
-      facebook:
-        "🌟 CUSTOMER SPOTLIGHT 🌟\n\nWe're absolutely thrilled to share this amazing review from Sarah M.:\n\n\"Amazing service! The staff was incredibly helpful and the food was delicious. Best Italian restaurant in town!\"\n\nSarah, thank you so much for your kind words! It's customers like you who make what we do so rewarding. We're honored to be your go-to Italian spot! ❤️\n\nTo all our amazing customers - THANK YOU for your continued support and for sharing your experiences with others!",
-    },
-  }
+  // Reset template selection and output when the business profile changes.
+  useEffect(() => {
+    setContentType("daily-special")
+    setGeneratedContent("")
+  }, [profile.id])
 
   const generateContent = async () => {
     setIsGenerating(true)
     await new Promise((resolve) => setTimeout(resolve, 2000))
-    const content = sampleContent[contentType as keyof typeof sampleContent]
+    const content = sampleContent[contentType]
     if (content) {
       setGeneratedContent(content.instagram)
+    } else {
+      setGeneratedContent(
+        `We don't have a saved sample for this template yet, but here's a starting point for ${profile.name}. Edit this draft to match your latest offer or announcement, then schedule it across your platforms.`,
+      )
     }
     setIsGenerating(false)
   }

@@ -1,80 +1,30 @@
 "use client"
 
-import { useState } from "react"
-import { Instagram, Facebook, Star, MessageCircle, Send, Sparkles } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Star, Send, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useBusiness } from "../context/business-context"
 
 export function UnifiedInbox() {
+  const { profile } = useBusiness()
   const [selectedMessage, setSelectedMessage] = useState(0)
   const [generatedResponse, setGeneratedResponse] = useState("")
 
-  const messages = [
-    {
-      id: 1,
-      type: "instagram_comment",
-      customer: "@foodie_sarah",
-      avatar: "S",
-      content: "This looks absolutely delicious! What's in the sauce? 😍",
-      platform: "Instagram",
-      platformIcon: Instagram,
-      timeAgo: "2 min ago",
-      status: "pending",
-      postContext: "Photo: Truffle Pasta Special",
-      sentiment: "positive",
-    },
-    {
-      id: 2,
-      type: "facebook_message",
-      customer: "Mike Johnson",
-      avatar: "M",
-      content: "Hi! I have a severe nut allergy. Can you tell me which dishes are safe for me to order?",
-      platform: "Facebook",
-      platformIcon: Facebook,
-      timeAgo: "5 min ago",
-      status: "pending",
-      sentiment: "neutral",
-    },
-    {
-      id: 3,
-      type: "google_review",
-      customer: "Jennifer L.",
-      avatar: "J",
-      content:
-        "Disappointed with our visit last night. Food was cold and service was slow. Expected better for the price.",
-      platform: "Google",
-      platformIcon: Star,
-      timeAgo: "12 min ago",
-      status: "pending",
-      rating: 2,
-      sentiment: "negative",
-    },
-    {
-      id: 4,
-      type: "instagram_dm",
-      customer: "@local_blogger",
-      avatar: "L",
-      content: "Hi! I'm a local food blogger with 15K followers. Would you be interested in a collaboration?",
-      platform: "Instagram",
-      platformIcon: MessageCircle,
-      timeAgo: "1 hour ago",
-      status: "pending",
-      sentiment: "positive",
-    },
-  ]
+  const messages = profile.messages
+  const aiResponses = profile.aiResponses
 
-  const aiResponses = {
-    0: "Hi Sarah! 😊 Thank you so much! Our truffle pasta features a creamy parmesan sauce with real black truffle shavings, fresh herbs, and a touch of white wine. It's one of our chef's signature dishes! We'd love to have you try it in person soon. What's your favorite type of pasta? 🍝✨",
-    1: "Hi Mike! Thank you for reaching out about your allergy - we take food safety very seriously. I'd be happy to help you dine safely with us! Our chef can prepare several dishes that are completely nut-free, including our Margherita pizza, grilled salmon, and most of our pasta dishes. I'll have our manager call you directly to discuss all safe options and ensure your meal is prepared with extra care. Could you share your phone number? We want to make sure you have a wonderful and worry-free dining experience! 🙏",
-    2: "Hi Jennifer, thank you for taking the time to share your feedback, and I sincerely apologize that your experience didn't meet our usual standards. Cold food and slow service are absolutely not acceptable, and I take full responsibility for this. I'd like to make this right immediately - could you please call us at [phone] or email us directly? I'd love to invite you and your party back for a complimentary meal so we can show you the experience we're truly known for. Your feedback helps us improve, and I'm personally committed to ensuring this doesn't happen again. Thank you for giving us the opportunity to do better.",
-    3: "Hi! Thank you so much for reaching out! We'd absolutely love to collaborate with you - your content looks amazing! 📸 We're always excited to work with local food enthusiasts who share our passion for great Italian cuisine. Could we schedule a time to chat about partnership opportunities? I'd love to have you try our new seasonal menu and discuss how we can create something special together. Feel free to DM us your availability or email us at [email]. Looking forward to working with you! 🤝✨",
-  }
+  // Reset selection and any draft when the business profile changes.
+  useEffect(() => {
+    setSelectedMessage(0)
+    setGeneratedResponse("")
+  }, [profile.id])
 
   const generateResponse = () => {
-    setGeneratedResponse(aiResponses[selectedMessage as keyof typeof aiResponses])
+    setGeneratedResponse(aiResponses[selectedMessage] ?? "")
   }
 
   return (
