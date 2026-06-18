@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-export type BusinessType = "restaurant" | "salon"
+export type BusinessType = "restaurant" | "salon" | "clinic"
 
 export interface InboxMessage {
   id: number
@@ -349,12 +349,148 @@ const salon: BusinessProfile = {
   ],
 }
 
+const clinic: BusinessProfile = {
+  id: "clinic",
+  name: "Brightwell Health Clinic",
+  label: "Health Clinic",
+  tagline: "Family medical & wellness practice",
+  messages: [
+    {
+      id: 1,
+      type: "instagram_comment",
+      customer: "@wellness_will",
+      avatar: "W",
+      content: "Great post on flu season! Do you offer flu jabs and how much are they? 💉",
+      platform: "Instagram",
+      platformIcon: Instagram,
+      timeAgo: "4 min ago",
+      status: "pending",
+      postContext: "Post: Flu Season Tips",
+      sentiment: "positive",
+    },
+    {
+      id: 2,
+      type: "facebook_message",
+      customer: "Daniel Price",
+      avatar: "D",
+      content: "Hi, I'd like to book a GP appointment this week. Do you have anything available and are you taking new patients?",
+      platform: "Facebook",
+      platformIcon: Facebook,
+      timeAgo: "9 min ago",
+      status: "pending",
+      sentiment: "neutral",
+    },
+    {
+      id: 3,
+      type: "google_review",
+      customer: "Karen S.",
+      avatar: "K",
+      content:
+        "Waited over an hour past my appointment time and reception seemed disorganised. The doctor was good but the wait was unacceptable.",
+      platform: "Google",
+      platformIcon: Star,
+      timeAgo: "18 min ago",
+      status: "pending",
+      rating: 2,
+      sentiment: "negative",
+    },
+    {
+      id: 4,
+      type: "facebook_message",
+      customer: "Priya Sharma",
+      avatar: "P",
+      content: "Can you tell me if I need a referral to see a physiotherapist, or can I book directly?",
+      platform: "Facebook",
+      platformIcon: MessageCircle,
+      timeAgo: "1 hour ago",
+      status: "pending",
+      sentiment: "neutral",
+    },
+  ],
+  aiResponses: {
+    0: "Hi Will! 😊 Thanks for your question - yes, we do offer flu vaccinations! Our flu jabs are $25, and they're free for eligible patients (over 65s, pregnant women, and those with certain health conditions). No appointment is needed for our walk-in flu clinic on weekday mornings. Would you like us to share the times? Stay well! 💙",
+    1: "Hi Daniel! Thanks for getting in touch. 😊 Yes, we are currently accepting new patients and we have GP appointments available this week - we have openings on Wednesday afternoon and Thursday morning. To get you booked in, could you let us know which works best and share your phone number? Our reception team will confirm everything and explain our quick new-patient registration. We look forward to welcoming you!",
+    2: "Hi Karen, thank you for sharing your feedback, and I'm truly sorry you waited over an hour and found reception disorganised. That's not the standard of care we aim for, and I completely understand your frustration. I'd like to look into what happened and make it right - please call our practice manager at [phone] or reply here. We genuinely value your feedback as it helps us improve for every patient. Thank you for your patience, and we hope to provide a much smoother experience next time. 🙏",
+    3: "Hi Priya! Great question. 😊 For physiotherapy, you can book directly with us - no GP referral is needed for self-funded appointments. If you're planning to claim through insurance, some providers do require a referral, so it's worth checking with them first. Would you like us to find you an available physio slot? Happy to help get you booked in!",
+  },
+  contentTemplates: [
+    { id: "daily-special", name: "Health Tip of the Week", description: "Share a helpful wellness tip" },
+    { id: "review-celebration", name: "Review Celebration", description: "Share positive patient reviews" },
+    { id: "behind-scenes", name: "Meet the Team", description: "Introduce your doctors and staff" },
+    { id: "customer-story", name: "Patient Story", description: "Highlight a patient success story" },
+    { id: "seasonal-menu", name: "Seasonal Health", description: "Promote seasonal services & screenings" },
+    { id: "event-announcement", name: "Service Announcement", description: "Announce clinics & new services" },
+  ],
+  sampleContent: {
+    "daily-special": {
+      instagram:
+        "🩺 Health Tip of the Week: Stay Hydrated! 💧\n\nDrinking enough water supports your energy, focus, and immune system. Aim for 6-8 glasses a day - more if you're active or it's warm out!\n\n✅ Carry a reusable bottle\n✅ Add fruit for flavor\n✅ Sip regularly, don't wait until you're thirsty\n\nBook a wellness check with our team today.\n\n#HealthTip #StayHydrated #WellnessWednesday #BrightwellHealth #PreventiveCare #FamilyHealth",
+      facebook:
+        "🩺 HEALTH TIP OF THE WEEK 🩺\n\nThis week's reminder: stay hydrated! Drinking 6-8 glasses of water a day supports your energy, concentration, and immune system. If you're active or it's warm, you'll need even more.\n\nSmall habits make a big difference - carry a reusable bottle, add a slice of fruit for flavor, and sip throughout the day rather than waiting until you feel thirsty.\n\nDue for a check-up? Our friendly team is here to help. Call us or send a message to book your appointment today! 💙",
+    },
+    "review-celebration": {
+      instagram:
+        '⭐⭐⭐⭐⭐ Thank you, James T.! ⭐⭐⭐⭐⭐\n\n"The whole team is caring and professional. Dr. Bright took the time to really listen and explain everything clearly. Highly recommend this practice!" - James T.\n\nReviews like this mean the world to us! 💙 Thank you for trusting us with your care.\n\n#PatientCare #FiveStars #ThankYou #BrightwellHealth #CaringTeam #HealthcareDoneRight',
+      facebook:
+        "🌟 PATIENT SPOTLIGHT 🌟\n\nWe're so grateful for this kind review from James T.:\n\n\"The whole team is caring and professional. Dr. Bright took the time to really listen and explain everything clearly. Highly recommend this practice!\"\n\nJames, thank you so much - taking the time to listen and provide clear, compassionate care is at the heart of everything we do. We're honored to look after you and your family. 💙\n\nTo all our patients - thank you for your trust!",
+    },
+  },
+  stats: [
+    { title: "Total Interactions", value: "1,084", change: "+17% this week", icon: MessageSquare, color: "text-blue-600" },
+    { title: "Response Rate", value: "99.4%", change: "+29% with AI", icon: CheckCircle, color: "text-green-600" },
+    { title: "Avg Response Time", value: "2.9 min", change: "-3.4 hrs saved", icon: Clock, color: "text-purple-600" },
+    { title: "Booking Enquiries", value: "14.1%", change: "+2.1% this month", icon: TrendingUp, color: "text-orange-600" },
+  ],
+  platformStats: [
+    { platform: "Instagram", icon: Instagram, interactions: 287, responseRate: "98%", avgTime: "2.4 min", color: "text-pink-600", bgColor: "bg-pink-50" },
+    { platform: "Facebook", icon: Facebook, interactions: 421, responseRate: "100%", avgTime: "1.7 min", color: "text-blue-600", bgColor: "bg-blue-50" },
+    { platform: "Google Reviews", icon: Star, interactions: 96, responseRate: "98%", avgTime: "4.0 min", color: "text-yellow-600", bgColor: "bg-yellow-50" },
+    { platform: "Messages", icon: MessageCircle, interactions: 280, responseRate: "99%", avgTime: "2.5 min", color: "text-green-600", bgColor: "bg-green-50" },
+  ],
+  recentActivity: [
+    {
+      id: 1,
+      type: "instagram_comment",
+      customer: "@wellness_will",
+      content: "Do you offer flu jabs?",
+      response: "Hi Will! Yes, we offer flu vaccinations at $25 (free for eligible patients), with walk-in clinics weekday mornings. Stay well! 💙",
+      platform: "Instagram",
+      timeAgo: "4 min ago",
+      status: "responded",
+    },
+    {
+      id: 2,
+      type: "facebook_message",
+      customer: "Daniel Price",
+      content: "Are you taking new patients?",
+      response:
+        "Hi Daniel! Yes, we're accepting new patients and have GP appointments this week. Let us know what works and we'll get you registered and booked in!",
+      platform: "Facebook",
+      timeAgo: "9 min ago",
+      status: "responded",
+    },
+    {
+      id: 3,
+      type: "google_review",
+      customer: "James T.",
+      content: "Caring, professional team. Highly recommend this practice!",
+      response:
+        "James, thank you so much! Listening and providing clear, compassionate care is at the heart of what we do. We're honored to look after you. 💙",
+      platform: "Google",
+      timeAgo: "16 min ago",
+      status: "responded",
+    },
+  ],
+}
+
 export const businessProfiles: Record<BusinessType, BusinessProfile> = {
   restaurant,
   salon,
+  clinic,
 }
 
 export const businessTypeOptions: { value: BusinessType; label: string }[] = [
   { value: "restaurant", label: restaurant.label },
   { value: "salon", label: salon.label },
+  { value: "clinic", label: clinic.label },
 ]
