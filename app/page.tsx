@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { MessageSquare, Settings, BarChart3, Sparkles, PenTool } from "lucide-react"
+import Link from "next/link"
+import { MessageSquare, Settings, BarChart3, Sparkles, PenTool, Inbox } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -32,6 +33,12 @@ export default function RESApp() {
               <Badge variant="secondary" className="bg-purple-100 text-purple-800">
                 Pro Plan - $399/mo
               </Badge>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/import-conversation">
+                  <Inbox className="h-4 w-4 mr-2" />
+                  Import Conversation
+                </Link>
+              </Button>
               <Button variant="outline" size="sm">
                 <Settings className="h-4 w-4 mr-2" />
                 Account
