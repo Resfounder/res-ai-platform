@@ -18,17 +18,52 @@ interface ImportedConversation {
   date: string
 }
 
-// Default brand voice used during pilots (no API integrations required).
-const PILOT_BRAND_VOICE = {
-  businessName: "Your Business",
-  businessType: "Local business",
-  personality: ["Warm", "Helpful", "Professional"],
-  tone: "friendly",
-  values: ["Customer care", "Quick responses", "Quality service"],
-  responseStyle: "Personal and caring, like talking to a trusted local business",
-  ownerName: "",
-  doNotSay: [],
-  preferredPhrases: [],
+// Simple rule-based reply generator for the pilot (no API integrations required).
+// Matches common enquiry types by keyword and returns a friendly, on-brand draft.
+function draftReply(message: string, customerName: string): string {
+  const text = message.toLowerCase()
+  const name = customerName.trim()
+  const greeting = name ? `Hi ${name}, ` : "Hi there, "
+
+  const has = (...keywords: string[]) => keywords.some((k) => text.includes(k))
+
+  // Pricing / cost enquiries
+  if (has("price", "pricing", "cost", "how much", "rates", "fee", "charge", "quote")) {
+    return `${greeting}thanks so much for reaching out! We'd be happy to help. Our consultation prices start from $XX, and the final cost depends on exactly what you need. If you let us know a little more about what you're looking for, we can give you an accurate quote. Would you like us to put one together for you?`
+  }
+
+  // Availability / booking enquiries
+  if (has("availab", "book", "appointment", "slot", "schedule", "this week", "free time", "opening")) {
+    return `${greeting}thanks for getting in touch! Yes, we do have availability coming up. To get you booked in, could you let us know which day and time works best for you? We'll do our best to fit you in as soon as possible.`
+  }
+
+  // Opening hours enquiries
+  if (has("hours", "open", "close", "what time", "when are you")) {
+    return `${greeting}great question! We're open Monday to Friday, 9am–5pm, and Saturdays 10am–2pm. If you'd like to pop in or arrange a time that suits you, just let us know and we'll be glad to help.`
+  }
+
+  // Location / address enquiries
+  if (has("where", "location", "address", "directions", "find you", "parking")) {
+    return `${greeting}thanks for asking! You can find us at [your address here]. There's parking nearby, and we're easy to reach. Let us know if you'd like directions or anything else before your visit.`
+  }
+
+  // Services / what they offer
+  if (has("do you do", "do you offer", "service", "what kind", "can you help with", "treatment")) {
+    return `${greeting}thanks for your message! We offer a range of services and would love to help with what you need. Could you tell us a bit more about what you're looking for? That way we can point you in the right direction and make sure we're the perfect fit for you.`
+  }
+
+  // Contact / get in touch
+  if (has("contact", "phone", "call", "email", "reach you", "speak to")) {
+    return `${greeting}thanks for reaching out! The easiest way to chat is right here, or you can call us on [your number] or email [your email]. Let us know what works best and we'll get back to you quickly.`
+  }
+
+  // Simple greetings
+  if (has("hello", "hi ", "hey", "good morning", "good afternoon") && message.trim().length < 30) {
+    return `${greeting}thanks so much for getting in touch! How can we help you today? We'd love to answer any questions you have.`
+  }
+
+  // Friendly fallback for anything else
+  return `${greeting}thanks so much for your message! We'd be happy to help with this. Could you share a little more detail so we can give you the best possible answer? We'll get back to you as soon as we can.`
 }
 
 export default function ImportConversationPage() {
@@ -59,32 +94,12 @@ export default function ImportConversationPage() {
     setIsApproved(false)
     setIsGenerating(true)
 
-    try {
-      const res = await fetch("/api/ai/generate-response", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          interaction: {
-            platform: conversation.platform,
-            type: "message",
-            customerName: conversation.customerName,
-            content: conversation.message,
-            context: `Received on ${conversation.date}`,
-          },
-          brandVoice: PILOT_BRAND_VOICE,
-        }),
-      })
-
-      if (!res.ok) throw new Error("Failed to generate response")
-
-      const result = await res.json()
-      setGeneratedResponse(result.response)
-    } catch (err) {
-      console.error("[v0] Error generating response:", err)
-      setError("Something went wrong generating the response. Please try again.")
-    } finally {
+    // Brief delay so the generating state is visible and feels responsive.
+    setTimeout(() => {
+      const reply = draftReply(conversation.message, conversation.customerName)
+      setGeneratedResponse(reply)
       setIsGenerating(false)
-    }
+    }, 600)
   }
 
   const copyResponse = () => {
