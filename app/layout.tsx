@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'R.E.S.',
-  description: 'R.E.S. — Complete AI Social Media Management',
+  description: 'R.E.S. — Never miss another customer query',
   generator: 'v0.app',
   icons: {
     icon: [

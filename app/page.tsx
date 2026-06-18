@@ -25,7 +25,7 @@ export default function RESApp() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">R.E.S.</h1>
-                <p className="text-sm text-gray-500">Complete AI Social Media Management</p>
+                <p className="text-sm text-gray-500">Never miss another customer query</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
