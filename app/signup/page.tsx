@@ -60,7 +60,7 @@ export default function SignupPage() {
               <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-2 rounded-lg">
                 <CheckCircle className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">SocialBot AI Setup</span>
+              <span className="text-2xl font-bold text-gray-900">R.E.S. Setup</span>
             </div>
             <Badge className="bg-green-100 text-green-800">14-Day Free Trial</Badge>
           </div>

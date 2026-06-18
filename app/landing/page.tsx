@@ -59,7 +59,7 @@ export default function LandingPage() {
       business: "Casa Maria Restaurant",
       image: "M",
       rating: 5,
-      text: "SocialBot AI has been a game-changer! We went from spending 3 hours daily on social media to just 15 minutes weekly. Our response rate is now 99% and customers love how quickly we respond.",
+      text: "R.E.S. has been a game-changer! We went from spending 3 hours daily on social media to just 15 minutes weekly. Our response rate is now 99% and customers love how quickly we respond.",
       results: "Saved 20+ hours/week",
     },
     {
@@ -75,7 +75,7 @@ export default function LandingPage() {
       business: "Bloom Flower Shop",
       image: "S",
       rating: 5,
-      text: "I was skeptical about AI handling customer service, but SocialBot AI gets our brand voice perfectly. It's like having a dedicated social media manager for a fraction of the cost.",
+      text: "I was skeptical about AI handling customer service, but R.E.S. gets our brand voice perfectly. It's like having a dedicated social media manager for a fraction of the cost.",
       results: "95% cost savings",
     },
   ]
@@ -97,7 +97,7 @@ export default function LandingPage() {
               <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-2 rounded-lg">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">SocialBot AI</span>
+              <span className="text-2xl font-bold text-gray-900">R.E.S.</span>
             </div>
             <div className="flex items-center space-x-4">
               <Button variant="ghost">Features</Button>
@@ -203,7 +203,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by 500+ Local Businesses</h2>
-            <p className="text-xl text-gray-600">See the impact SocialBot AI has on businesses like yours</p>
+            <p className="text-xl text-gray-600">See the impact R.E.S. has on businesses like yours</p>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -293,7 +293,7 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Save 20+ Hours Per Week?</h2>
           <p className="text-xl text-purple-100 mb-8">
-            Join hundreds of local businesses already using SocialBot AI to automate their customer interactions.
+            Join hundreds of local businesses already using R.E.S. to automate their customer interactions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
@@ -319,7 +319,7 @@ export default function LandingPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles className="h-6 w-6" />
-                <span className="text-xl font-bold">SocialBot AI</span>
+                <span className="text-xl font-bold">R.E.S.</span>
               </div>
               <p className="text-gray-400">AI-powered social media management for local businesses.</p>
             </div>
@@ -352,7 +352,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 SocialBot AI. All rights reserved.</p>
+            <p>&copy; 2025 R.E.S. All rights reserved.</p>
           </div>
         </div>
       </footer>

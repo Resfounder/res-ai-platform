@@ -10,7 +10,7 @@ import { UnifiedInbox } from "./components/unified-inbox"
 import { ContentGenerator } from "./components/content-generator"
 import { SettingsPanel } from "./components/settings-panel"
 
-export default function SocialBotAI() {
+export default function RESApp() {
   const [activeTab, setActiveTab] = useState("dashboard")
 
   return (
@@ -24,7 +24,7 @@ export default function SocialBotAI() {
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">SocialBot AI</h1>
+                <h1 className="text-2xl font-bold text-gray-900">R.E.S.</h1>
                 <p className="text-sm text-gray-500">Complete AI Social Media Management</p>
               </div>
             </div>

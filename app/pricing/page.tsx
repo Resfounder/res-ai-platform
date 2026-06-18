@@ -110,7 +110,7 @@ export default function PricingPage() {
               <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-2 rounded-lg">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">SocialBot AI</span>
+              <span className="text-2xl font-bold text-gray-900">R.E.S.</span>
             </div>
             <div className="flex items-center space-x-4">
               <Button variant="ghost">Back to Home</Button>
@@ -219,7 +219,7 @@ export default function PricingPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Calculate Your ROI</h2>
-            <p className="text-xl text-gray-600">See how much time and money SocialBot AI can save your business</p>
+            <p className="text-xl text-gray-600">See how much time and money R.E.S. can save your business</p>
           </div>
 
           <Card className="bg-white shadow-xl">
@@ -248,7 +248,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <h3 className="text-xl font-semibold text-gray-900">With SocialBot AI</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">With R.E.S.</h3>
                   <div className="space-y-4">
                     <div className="flex justify-between">
                       <span>Time spent weekly:</span>
