@@ -12,7 +12,7 @@ interface BusinessContextValue {
 const BusinessContext = createContext<BusinessContextValue | undefined>(undefined)
 
 export function BusinessProvider({ children }: { children: ReactNode }) {
-  const [businessType, setBusinessType] = useState<BusinessType>("restaurant")
+  const [businessType, setBusinessType] = useState<BusinessType>("hairsalon")
   const profile = businessProfiles[businessType]
 
   return (
