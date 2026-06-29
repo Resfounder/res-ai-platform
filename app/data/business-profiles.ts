@@ -8,6 +8,8 @@ import {
   Clock,
   TrendingUp,
   Globe,
+  Hourglass,
+  Inbox,
   type LucideIcon,
 } from "lucide-react"
 
@@ -172,6 +174,8 @@ const hairsalon: BusinessProfile = {
     { title: "Response Rate", value: "99.1%", change: "+26% with AI", icon: CheckCircle, color: "text-green-600" },
     { title: "Avg Response Time", value: "2.6 min", change: "-3.2 hrs saved", icon: Clock, color: "text-purple-600" },
     { title: "Booking Enquiries", value: "13.4%", change: "+2.6% this month", icon: TrendingUp, color: "text-orange-600" },
+    { title: "Waiting for a Response", value: "8", change: "3 over 1 hour", icon: Hourglass, color: "text-amber-600" },
+    { title: "Awaiting Reply", value: "5", change: "Customer replied back", icon: Inbox, color: "text-rose-600" },
   ],
   platformStats: [
     { platform: "Instagram", icon: Instagram, interactions: 534, responseRate: "99%", avgTime: "1.8 min", color: "text-pink-600", bgColor: "bg-pink-50" },
@@ -304,6 +308,8 @@ const dental: BusinessProfile = {
     { title: "Response Rate", value: "99.3%", change: "+28% with AI", icon: CheckCircle, color: "text-green-600" },
     { title: "Avg Response Time", value: "3.0 min", change: "-3.3 hrs saved", icon: Clock, color: "text-purple-600" },
     { title: "Booking Enquiries", value: "13.8%", change: "+2.2% this month", icon: TrendingUp, color: "text-orange-600" },
+    { title: "Waiting for a Response", value: "11", change: "4 over 1 hour", icon: Hourglass, color: "text-amber-600" },
+    { title: "Awaiting Reply", value: "6", change: "Customer replied back", icon: Inbox, color: "text-rose-600" },
   ],
   platformStats: [
     { platform: "Instagram", icon: Instagram, interactions: 312, responseRate: "98%", avgTime: "2.3 min", color: "text-pink-600", bgColor: "bg-pink-50" },
@@ -436,6 +442,8 @@ const aesthetic: BusinessProfile = {
     { title: "Response Rate", value: "99.0%", change: "+30% with AI", icon: CheckCircle, color: "text-green-600" },
     { title: "Avg Response Time", value: "2.8 min", change: "-3.5 hrs saved", icon: Clock, color: "text-purple-600" },
     { title: "Booking Enquiries", value: "14.6%", change: "+2.8% this month", icon: TrendingUp, color: "text-orange-600" },
+    { title: "Waiting for a Response", value: "7", change: "2 over 1 hour", icon: Hourglass, color: "text-amber-600" },
+    { title: "Awaiting Reply", value: "4", change: "Customer replied back", icon: Inbox, color: "text-rose-600" },
   ],
   platformStats: [
     { platform: "Instagram", icon: Instagram, interactions: 489, responseRate: "99%", avgTime: "1.9 min", color: "text-pink-600", bgColor: "bg-pink-50" },
@@ -570,6 +578,8 @@ const salon: BusinessProfile = {
     { title: "Response Rate", value: "99.0%", change: "+27% with AI", icon: CheckCircle, color: "text-green-600" },
     { title: "Avg Response Time", value: "2.7 min", change: "-3.1 hrs saved", icon: Clock, color: "text-purple-600" },
     { title: "Booking Enquiries", value: "12.6%", change: "+2.4% this month", icon: TrendingUp, color: "text-orange-600" },
+    { title: "Waiting for a Response", value: "9", change: "3 over 1 hour", icon: Hourglass, color: "text-amber-600" },
+    { title: "Awaiting Reply", value: "5", change: "Customer replied back", icon: Inbox, color: "text-rose-600" },
   ],
   platformStats: [
     { platform: "Instagram", icon: Instagram, interactions: 512, responseRate: "99%", avgTime: "1.9 min", color: "text-pink-600", bgColor: "bg-pink-50" },
@@ -704,6 +714,8 @@ const clinic: BusinessProfile = {
     { title: "Response Rate", value: "99.4%", change: "+29% with AI", icon: CheckCircle, color: "text-green-600" },
     { title: "Avg Response Time", value: "2.9 min", change: "-3.4 hrs saved", icon: Clock, color: "text-purple-600" },
     { title: "Booking Enquiries", value: "14.1%", change: "+2.1% this month", icon: TrendingUp, color: "text-orange-600" },
+    { title: "Waiting for a Response", value: "10", change: "4 over 1 hour", icon: Hourglass, color: "text-amber-600" },
+    { title: "Awaiting Reply", value: "6", change: "Customer replied back", icon: Inbox, color: "text-rose-600" },
   ],
   platformStats: [
     { platform: "Instagram", icon: Instagram, interactions: 287, responseRate: "98%", avgTime: "2.4 min", color: "text-pink-600", bgColor: "bg-pink-50" },
