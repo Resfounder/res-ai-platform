@@ -156,7 +156,7 @@ export function ReviewDashboard() {
                 <span className="font-medium text-blue-900">Time Saved This Month</span>
               </div>
               <p className="text-2xl font-bold text-blue-900 mt-1">23.5 hours</p>
-              <p className="text-sm text-blue-700">Equivalent to $470 in labor costs</p>
+              <p className="text-sm text-blue-700">Equivalent to £470 in labor costs</p>
             </div>
           </CardContent>
         </Card>

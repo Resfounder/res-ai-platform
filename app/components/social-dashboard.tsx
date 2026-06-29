@@ -208,7 +208,7 @@ export function SocialDashboard() {
                 <span className="font-medium text-purple-900">Time Saved This Month</span>
               </div>
               <p className="text-3xl font-bold text-purple-900 mt-1">47.2 hours</p>
-              <p className="text-sm text-purple-700">Equivalent to $1,180 in labor costs</p>
+              <p className="text-sm text-purple-700">Equivalent to £1,180 in labor costs</p>
               <p className="text-xs text-purple-600 mt-1">ROI: 295% vs subscription cost</p>
             </div>
           </CardContent>
