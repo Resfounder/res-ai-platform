@@ -386,12 +386,12 @@ const dental: BusinessProfile = {
     },
   ],
   healthScore: [
-    { label: "Google review response rate", weight: 25, score: 95 },
-    { label: "Average response time", weight: 20, score: 90 },
-    { label: "Messages awaiting reply", weight: 20, score: 72 },
-    { label: "Customer sentiment", weight: 15, score: 88 },
-    { label: "Social engagement", weight: 10, score: 76 },
-    { label: "Channel coverage", weight: 10, score: 85 },
+    { label: "Google review response rate", weight: 25, score: 70 },
+    { label: "Average response time", weight: 20, score: 60 },
+    { label: "Messages awaiting reply", weight: 20, score: 55 },
+    { label: "Customer sentiment", weight: 15, score: 68 },
+    { label: "Social engagement", weight: 10, score: 62 },
+    { label: "Channel coverage", weight: 10, score: 65 },
   ],
 }
 
@@ -816,12 +816,12 @@ const clinic: BusinessProfile = {
     },
   ],
   healthScore: [
-    { label: "Google review response rate", weight: 25, score: 94 },
-    { label: "Average response time", weight: 20, score: 89 },
-    { label: "Messages awaiting reply", weight: 20, score: 70 },
-    { label: "Customer sentiment", weight: 15, score: 87 },
-    { label: "Social engagement", weight: 10, score: 74 },
-    { label: "Channel coverage", weight: 10, score: 88 },
+    { label: "Google review response rate", weight: 25, score: 55 },
+    { label: "Average response time", weight: 20, score: 45 },
+    { label: "Messages awaiting reply", weight: 20, score: 40 },
+    { label: "Customer sentiment", weight: 15, score: 52 },
+    { label: "Social engagement", weight: 10, score: 50 },
+    { label: "Channel coverage", weight: 10, score: 48 },
   ],
 }
 
