@@ -102,6 +102,14 @@ export function calculateHealthScore(categories: HealthScoreCategory[]): number 
   return Math.round(weighted / totalWeight)
 }
 
+// Maps an overall score to a human-readable rating and matching colors.
+export function getHealthRating(score: number): { label: string; color: string; ring: string } {
+  if (score >= 90) return { label: "Excellent", color: "text-green-700", ring: "text-green-500" }
+  if (score >= 75) return { label: "Good", color: "text-blue-700", ring: "text-blue-500" }
+  if (score >= 60) return { label: "Fair", color: "text-amber-700", ring: "text-amber-500" }
+  return { label: "Needs Attention", color: "text-rose-700", ring: "text-rose-500" }
+}
+
 const hairsalon: BusinessProfile = {
   id: "hairsalon",
   name: "Luxe Hair Studio",
