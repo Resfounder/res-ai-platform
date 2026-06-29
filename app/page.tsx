@@ -85,7 +85,7 @@ function RESAppContent() {
             </TabsTrigger>
             <TabsTrigger value="inbox" className="flex items-center space-x-2">
               <MessageSquare className="h-4 w-4" />
-              <span>Inbox</span>
+              <span>Customer Enquiries</span>
             </TabsTrigger>
             <TabsTrigger value="content" className="flex items-center space-x-2">
               <PenTool className="h-4 w-4" />

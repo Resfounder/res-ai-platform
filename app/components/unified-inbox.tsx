@@ -34,7 +34,7 @@ export function UnifiedInbox() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>Unified Inbox</CardTitle>
+              <CardTitle>Customer Enquiries</CardTitle>
               <CardDescription>All customer interactions in one place</CardDescription>
             </div>
             <Select defaultValue="all">

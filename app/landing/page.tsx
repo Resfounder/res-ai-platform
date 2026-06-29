@@ -23,7 +23,7 @@ export default function LandingPage() {
   const features = [
     {
       icon: MessageSquare,
-      title: "Unified Inbox",
+      title: "Customer Enquiries",
       description: "All reviews, comments, and messages in one place",
     },
     {
