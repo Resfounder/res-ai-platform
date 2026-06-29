@@ -70,6 +70,14 @@ export interface RecentActivity {
   status: string
 }
 
+export interface HealthScoreCategory {
+  label: string
+  // Relative weight of this category (all weights sum to 100).
+  weight: number
+  // The business's performance in this area, 0-100.
+  score: number
+}
+
 export interface BusinessProfile {
   id: BusinessType
   name: string
@@ -82,6 +90,16 @@ export interface BusinessProfile {
   stats: DashboardStat[]
   platformStats: PlatformStat[]
   recentActivity: RecentActivity[]
+  healthScore: HealthScoreCategory[]
+}
+
+// Computes the overall communication health score (0-100) as the
+// weighted average of each category's performance: sum(score * weight) / sum(weight).
+export function calculateHealthScore(categories: HealthScoreCategory[]): number {
+  const totalWeight = categories.reduce((sum, c) => sum + c.weight, 0)
+  if (totalWeight === 0) return 0
+  const weighted = categories.reduce((sum, c) => sum + c.score * c.weight, 0)
+  return Math.round(weighted / totalWeight)
 }
 
 const hairsalon: BusinessProfile = {
@@ -217,6 +235,14 @@ const hairsalon: BusinessProfile = {
       status: "responded",
     },
   ],
+  healthScore: [
+    { label: "Google review response rate", weight: 25, score: 92 },
+    { label: "Average response time", weight: 20, score: 88 },
+    { label: "Messages awaiting reply", weight: 20, score: 78 },
+    { label: "Customer sentiment", weight: 15, score: 84 },
+    { label: "Social engagement", weight: 10, score: 90 },
+    { label: "Channel coverage", weight: 10, score: 80 },
+  ],
 }
 
 const dental: BusinessProfile = {
@@ -351,6 +377,14 @@ const dental: BusinessProfile = {
       status: "responded",
     },
   ],
+  healthScore: [
+    { label: "Google review response rate", weight: 25, score: 95 },
+    { label: "Average response time", weight: 20, score: 90 },
+    { label: "Messages awaiting reply", weight: 20, score: 72 },
+    { label: "Customer sentiment", weight: 15, score: 88 },
+    { label: "Social engagement", weight: 10, score: 76 },
+    { label: "Channel coverage", weight: 10, score: 85 },
+  ],
 }
 
 const aesthetic: BusinessProfile = {
@@ -484,6 +518,14 @@ const aesthetic: BusinessProfile = {
       timeAgo: "18 min ago",
       status: "responded",
     },
+  ],
+  healthScore: [
+    { label: "Google review response rate", weight: 25, score: 90 },
+    { label: "Average response time", weight: 20, score: 92 },
+    { label: "Messages awaiting reply", weight: 20, score: 82 },
+    { label: "Customer sentiment", weight: 15, score: 86 },
+    { label: "Social engagement", weight: 10, score: 94 },
+    { label: "Channel coverage", weight: 10, score: 82 },
   ],
 }
 
@@ -621,6 +663,14 @@ const salon: BusinessProfile = {
       status: "responded",
     },
   ],
+  healthScore: [
+    { label: "Google review response rate", weight: 25, score: 88 },
+    { label: "Average response time", weight: 20, score: 85 },
+    { label: "Messages awaiting reply", weight: 20, score: 76 },
+    { label: "Customer sentiment", weight: 15, score: 90 },
+    { label: "Social engagement", weight: 10, score: 92 },
+    { label: "Channel coverage", weight: 10, score: 78 },
+  ],
 }
 
 const clinic: BusinessProfile = {
@@ -756,6 +806,14 @@ const clinic: BusinessProfile = {
       timeAgo: "16 min ago",
       status: "responded",
     },
+  ],
+  healthScore: [
+    { label: "Google review response rate", weight: 25, score: 94 },
+    { label: "Average response time", weight: 20, score: 89 },
+    { label: "Messages awaiting reply", weight: 20, score: 70 },
+    { label: "Customer sentiment", weight: 15, score: 87 },
+    { label: "Social engagement", weight: 10, score: 74 },
+    { label: "Channel coverage", weight: 10, score: 88 },
   ],
 }
 
